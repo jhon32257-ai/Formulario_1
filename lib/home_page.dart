@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                 child: TextFormField(
                   controller: _txtIdentificacion,
                   decoration: InputDecoration(
-                    labelText: 'Identificación max 20 digitos',
+                    labelText: 'Identificación',
                     hintText: "Solo números",
                     prefixIcon: Icon(Icons.badge),
                     border: OutlineInputBorder(),
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                     border: OutlineInputBorder(),
                   ),
                   keyboardType: TextInputType.emailAddress,
-                  inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                  inputFormatters: [LengthLimitingTextInputFormatter(50)],
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "El número de celular es obligatorio";
@@ -156,7 +156,8 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(Icons.save),
                   onPressed: () {
                     final esValido = _formKey.currentState!.validate();
-                    if (!esValido) return; // Hay errores: los mensajes se muestran debajo de los campos
+                    if (!esValido)
+                      return; // Hay errores: los mensajes se muestran debajo de los campos
                     _txtIdentificacion.clear();
                     _txtNombre.clear();
                     _txtCelular.clear();
